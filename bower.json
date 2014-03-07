@@ -3,7 +3,7 @@
   "version": "1.0",
   "homepage": "https://github.com/syslabcom/patterns.star.rest",
   "authors": [
-    "Florian Friesdorf <chaoflow.net>"
+    "Florian Friesdorf <chaoflow.net>",
     "Marko Durkovic <marko@miding.de>"
   ],
   "description": "Patterns rest - Interact with restful apis",
