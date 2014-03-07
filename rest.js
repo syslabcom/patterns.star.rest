@@ -6,9 +6,9 @@
  */
 define([
     "jquery",
-    "registry",
-    "logger",
-    "parser",
+    "pat-registry",
+    "pat-logger",
+    "pat-parser",
     "star-ajax"
 ], function($, registry, logger, Parser, ajax) {
     var log = logger.getLogger('pat.rest'),
