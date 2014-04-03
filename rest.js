@@ -14,11 +14,15 @@ define([
     var log = logger.getLogger('pat.rest'),
         parser = new Parser('rest');
 
+    parser.add_argument("keep-empty");
+
     var _ = {
         name: "rest",
         trigger: "form.pat-rest",
         parser: parser,
         init: function($el) {
+            options = parser.parse($el);
+            $el.data("patRest", options['keepEmpty']);
             $el.on('submit.pat-rest', _.onSubmit)
                .on('click.pat-ajax', '[type=submit]', _.onClickSubmit);
             return $el;
@@ -48,11 +52,11 @@ define([
             });
         },
         _serializeObject: function($el) {
-            var ret = {};
+            var ret = {}, keepEmpty = $el.data('patRest');
             $.each($el.serializeArray()
                       .concat($el.data('pat-rest.clicked-data') || []),
                      function() {
-                if (this.value === '') {
+                if (this.value === '' && !keepEmpty) {
                     return;
                 }
                 if ($('[name="'+this.name+'"]')
